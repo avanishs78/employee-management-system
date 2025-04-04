@@ -1,15 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './../App.css';
 import Button from 'react-bootstrap/Button';
 
 
-function Sidebar(){
-    const hideSidebar = ()=>{
-        document.getElementsByClassName('sidebar')[0].style.display = 'none';
-    }
+function Sidebar({isOpen,hideSidebar}){
+   
     return(
-        <div className='sidebar'>
-         <h3>Dashboard</h3><button onClick={hideSidebar}>x</button>
+        <div className={isOpen?'sidebar':'sidebar_close'}>
+         <h3>Dashboard</h3>
             <ul >
                 <li>Home</li>
                 <li>About</li>

@@ -7,19 +7,26 @@ import Table from 'react-bootstrap/Table';
 function EmployeeData({ employeeData,setEmployeeData }) {
 
     const SortByName =()=>{
-        const SortedData = employeeData.sort();
+        const SortedData = employeeData.sort(compare);
         setEmployeeData(SortedData);
         console.log('working');
+    }
+    function compare(a,b){
+        if(a.name>b.name)
+        return 1;
+       if(a.name<b.name)
+       return -1;
+    return 0;
     }
 
     return (
         <div className='employee_data'>
             <h4 style={{margin:'0px',textAlign:'center'}}>Employee List</h4><br/>
-            Sort By:<select ><option>--select--</option>
-                            <option onClick={SortByName}>Name</option>
+            Sort By:<select  ><option>--select--</option>
+                            <option onClick={SortByName} >Name</option>
                             <option>Age</option>
                   </select><br/><br/>
-            <Table class="table-primary">
+            <Table className="table-primary">
                 <thead>
                     <tr>
                         <th>Sl No.</th>

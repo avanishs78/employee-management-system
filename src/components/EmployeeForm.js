@@ -1,7 +1,8 @@
 import React from 'react';
 import './../App.css';
+import New_Emp_img from './../assets/New Employee Data.png'
 import Button from 'react-bootstrap/Button';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 function EmployeeForm(props) {
@@ -24,16 +25,16 @@ function EmployeeForm(props) {
         setEmployee({ ...employee, description: e.target.value });
     }
     const SubmitEmployeeData = () => {
-        if(employee.name && employee.contact && employee.email && employee.description){
+        if (employee.name && employee.contact && employee.email && employee.description) {
             setEmployeeData([...employeeData, employee]);
-           setEmployee({
-            name: '',
-            gender: '',
-            contact: '',
-            email: '',
-            description: ''
-        });
-       }
+            setEmployee({
+                name: '',
+                gender: '',
+                contact: '',
+                email: '',
+                description: ''
+            });
+        }
 
     }
     const ResetEmployeeData = () => {
@@ -46,31 +47,37 @@ function EmployeeForm(props) {
         });
     }
     return (
-        <div className='Employee_form'>
-            <h3>Please Enter Employee Data</h3>
-            <label>Full Name :<br />
-                <input type='text' value={employee.name} onChange={handleNameChange} />
-            </label>
-            {/* <div className='gender'>Gender :<br/>
+        <div className='main_div'>
+            <div className='Employee_form'>
+                <h3>Please Enter Employee Data</h3>
+                <label>Full Name :<br />
+                    <input type='text' value={employee.name} onChange={handleNameChange} />
+                </label>
+                {/* <div className='gender'>Gender :<br/>
                 
                     <label>Male:<input type='radio' name='gender' value='Male' onChange={handleGenderChange} /></label>
                     <label>Female:<input type='radio' name='gender' value='Female' onChange={handleGenderChange} /></label>
                     <label>Other:<input type='radio' name='gender' value='Other' onChange={handleGenderChange} /></label>
                 
             </div><br/> */}
-            <label>Contact :<br />
-                <input type='text' value={employee.contact} onChange={handleContactChange} />
-            </label>
-            <label>Email :<br />
-                <input type='text' value={employee.email} onChange={handleEmailChange} />
-            </label>
-            <label>Description :<br />
-                <input type='text' value={employee.description} onChange={handleDescriptionChange} />
-            </label>
-            <div>
-                <Link to ='/' ><Button variant="success" onClick={SubmitEmployeeData} >Submit</Button></Link>
-                <Button variant="info" onClick={ResetEmployeeData} >Reset</Button>
+                <label>Contact :<br />
+                    <input type='text' value={employee.contact} onChange={handleContactChange} />
+                </label>
+                <label>Email :<br />
+                    <input type='text' value={employee.email} onChange={handleEmailChange} />
+                </label>
+                <label>Description :<br />
+                    <input type='text' value={employee.description} onChange={handleDescriptionChange} />
+                </label>
+                <div>
+                    <Link to='/' ><Button className='button' variant="success" onClick={SubmitEmployeeData} >Submit</Button></Link>
+                    <Button className='button' variant="info" onClick={ResetEmployeeData} >Reset</Button>
+                </div>
+                
             </div>
+          
+                <img className='emp_image' src={New_Emp_img} alt='No image found'></img>
+            
         </div>
     )
 }

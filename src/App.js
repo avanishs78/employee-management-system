@@ -4,8 +4,13 @@ import Sidebar from './components/sidebar';
 import EmployeeForm from './components/EmployeeForm';
 import EmployeeData from './components/EmployeeData';
 import { Routes, Route } from "react-router-dom";
+import Hamburger from 'hamburger-react'
 
 function App() {
+  const [isOpen,setIsOpen] = useState(false);
+  const hideSidebar = ()=>{
+          setIsOpen(!isOpen);
+  }
   const [employeeData, setEmployeeData] = useState([{
     name: 'David',
     gender: 'Male',
@@ -34,17 +39,25 @@ function App() {
     email: '',
     description: ''
   });
-
+  
   return (
     <div className="App">
-      <Sidebar />
-      <div>
-      <h1>Employee Management System</h1>
+      
+      
+      <div style={{width:'100%'}}>
+       <div className='header'>
+
+        <Hamburger toggled={isOpen} toggle={setIsOpen}/>
+        <h2>Employee Management System</h2>
+       </div>
+       <div className='body'>
+       <Sidebar isOpen={isOpen} hideSidebar={hideSidebar}/>
       <Routes>
         <Route path="/" element={<EmployeeData employeeData={employeeData} setEmployeeData={setEmployeeData} />}/>
         <Route path="employeeForm" element={<EmployeeForm employee={employee} setEmployee={setEmployee} employeeData={employeeData} setEmployeeData={setEmployeeData} />} />
         <Route path="employeeData" element={<EmployeeData employeeData={employeeData} setEmployeeData={setEmployeeData} />}/>
       </Routes>
+      </div>
       </div>
     </div>
   );
