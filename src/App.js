@@ -3,8 +3,10 @@ import './App.css';
 import Sidebar from './components/sidebar';
 import EmployeeForm from './components/EmployeeForm';
 import EmployeeData from './components/EmployeeData';
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import Hamburger from 'hamburger-react'
+import Login from './components/LoginPage';
+import { Button } from 'react-bootstrap';
 
 function App() {
   const [isOpen,setIsOpen] = useState(false);
@@ -49,11 +51,13 @@ function App() {
 
         <Hamburger toggled={isOpen} toggle={setIsOpen}/>
         <h2>Employee Management System</h2>
+        <Link to='/login' ><Button variant='danger'>Sign out</Button></Link>
        </div>
        <div className='body'>
        <Sidebar isOpen={isOpen} hideSidebar={hideSidebar}/>
       <Routes>
         <Route path="/" element={<EmployeeData employeeData={employeeData} setEmployeeData={setEmployeeData} />}/>
+        <Route path="/login" element={<Login  />}/>
         <Route path="employeeForm" element={<EmployeeForm employee={employee} setEmployee={setEmployee} employeeData={employeeData} setEmployeeData={setEmployeeData} />} />
         <Route path="employeeData" element={<EmployeeData employeeData={employeeData} setEmployeeData={setEmployeeData} />}/>
       </Routes>
