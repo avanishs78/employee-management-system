@@ -59,7 +59,7 @@ function Login(props) {
                 {error? <span className='error'>{error}</span> :<span>Hint: Enter a valid login details</span>}
                 </div>
                 <div>
-                    <Link to='' ><Button className='button' variant="success" onClick={SubmitLoginDetails} >Login</Button></Link>
+                    <Link to={!error && '/'} ><Button className='button' variant="success" onClick={SubmitLoginDetails} >Login</Button></Link>
                     <Button className='button' variant="info" onClick={ResetEmployeeData} >Reset</Button>
                 </div>
                 
